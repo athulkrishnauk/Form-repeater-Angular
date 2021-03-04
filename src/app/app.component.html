@@ -1,0 +1,45 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title mb-4">Form repeater</h4>
+        <form class="repeater" [formGroup]="form">
+          <div formArrayName="formlist">
+            <div *ngFor="let data1 of formData().controls; let i=index;">
+              <div [formGroupName]="i" class="row">
+                <div class="form-group col-lg-2">
+                  <label for="name">Name</label>
+                  <input type="text" formControlName="name" class="form-control">
+                </div>
+
+                <div class="form-group col-lg-2">
+                  <label for="email">Email</label>
+                  <input type="email" formControlName="email" class="form-control">
+                </div>
+
+                <div class="form-group col-lg-2">
+                  <label for="subject">DOB</label>
+                  <input type="date" formControlName="dob" class="form-control">
+                </div>
+
+                <div class="col-lg-2 align-self-center">
+                  <input type="button" class="btn btn-danger btn-block" value="Delete" (click)="removeField(i)">
+                </div>
+              </div>
+            </div>
+            <input type="button" class="btn btn-success mt-3 mt-lg-0" value="Add" (click)="addField()"><br><br>
+
+            <input type="button" class="btn btn-primary mt-3 mt-lg-0" value="Submit" (click)="addForm()">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<router-outlet></router-outlet>
